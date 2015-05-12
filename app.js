@@ -39,9 +39,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(stormpath.init(app, {
-    id: process.env.STORMPATH_API_KEY_ID,
-    secret: process.env.STORMPATH_API_KEY_SECRET,
-    redirectUrl: '/dashboard'
+    redirectUrl: '/dashboard',
+    apiKeyId: process.env.STORMPATH_API_KEY_ID,
+    apiKeySecret: process.env.STORMPATH_API_KEY_SECRET,
+    application: process.env.STORMPATH_APPLICATION
 }));
 
 app.use('/', routes);
